@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% include "navbar.html" %}
+  <section class="bg-slate-200 font-robotocon" id="containerlp">
+      <div class="w-full min-h-screen pb-14 md:flex md:blur-none pt-28 md:py-36 bg-slate-100" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 80% 91%, 66% 98%, 43% 100%, 27% 94%, 0 100%);">
+        <div class="md:hidden relative">
+          <img data-aos="zoom-in" src="{% static 'img/hero.png' %}" alt="" class="w-[40%] sm:w-[30%] mx-auto">
+        </div>
+        <div class="md:w-1/2 w-full md:flex md:flex-col md:justify-center px-10 relative">
+          <h1 class="lg:text-6xl md:text-4xl font-semibold pt-6 text-xl sm:text-3xl font-fredoka" data-aos="fade-down" >Pelabuhan Perikanan Nusantara</h1>
+          <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base" data-aos="fade-left" data-aos-delay="200">Adalah pelabuhan perikanan yang diperuntukkan bagi kapal perikanan yang beroperasi di perairan nusantara</h2>
+          <div class="">
+            <a href="#deskripsippnkarangantu" class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block" data-aos="fade-right" data-aos-delay="300">Selengkapnya</a>
+          </div>
+        </div>
+        <div class="md:w-1/2 w-full md:flex flex-col justify-center px-16 items-center hidden relative">
+
+          <img data-aos="zoom-in" data-aos-delay="500" src="{% static 'img/hero.png' %}" alt="Logo" class="w-1/2">
+        </div>
+      </div>
+  
+      <div class=" w-full pb-10 pt-6" id="deskripsippnkarangantu">
+        <h1 data-aos="fade-down" class="md:text-6xl text-xl sm:text-3xl text-center font-semibold font-fredoka">PPN Karangantu</h1>
+        <p data-aos="zoom-in" class="md:px-10 px-4 pt-6 text-slate-800 text-sm md:text-lg indent-12 text-justify">
+          Pelabuhan Perikanan Nusantara (PPN) Karangantu terletak pada posisi koordinat 06º 02' LS - 106º 09' BT.  Pada awalnya PPN Karangantu merupakan suatu pantai yang secara tradisional berkembang dari suatu kelompok pemukiman yang mendiami daerah dari lahan di muara kali Cibanten. Seiring waktu, PPN Karangantu menjadi suatu pelabuhan nelayan yang cukup besar dan berperan penting sebagai pusat kegiatan perikanan yang memasok sebagian kebutuhan ikan wilayah Provinsi Banten. Pada tahun 1975/1976 Pelabuhan Perikanan Karangantu  mulai dibangun diatas tanah seluas 2.5 Ha bertempat di Desa Banten Kecamatan Kasemen  dan berdasarkan SK Menteri Pertanian Nomor: 311/Kpts/Org/5/1978 secara resmi beroperasional dan menjadi UPT dibawah Direktorat Jenderal Perikanan Tangkap dengan nama Pelabuhan Perikanan Pantai (PPP) Karangantu bertipe C.  Seiring dengan semakin berkembang dan meningkatnya kegiatan operasional pelabuhan maka tanggal 30 Desember 2010 melalui Peraturan Menteri Kelautan dan Perikanan Republik Indonesia Nomor : PER.29/MEN/2010 tanggal 30 Desember 2010 tentang perubahan kedua atas Peraturan Menteri Kelautan dan Perikanan Nomor PER.06/MEN/2007 tentang Organisasi dan Tata Kerja Pelabuhan Perikanan yang didahului dengan dikeluarkannya Surat Menteri Negara Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Republik Indonesia tanggal 02 Desember 2010 Nomor. B.3677/M.PAN-RB/12/2010 tentang Usulan Penataan UPT dilingkungan Kementerian Kelautan dan Perikanan sehingga pada tanggal 30 Desember 2010 Pelabuhan Perikanan Pantai Karangantu resmi berganti nama dan meningkat kelasnya menjadi Pelabuhan Perikanan Nusantara (PPN) Karangantu bertipe B.
+        </p>
+        <p data-aos="fade-right" class="md:px-10 px-4 text-slate-800 text-sm md:text-lg">
+          Sumber : <a href="https://pipp.djpt.kkp.go.id/profil_pelabuhan/1309/informasi" target="_blank" rel="noreferrer" class="text-violet-800">PIPP</a>
+        </p>
+
+        <!-- <div class="carousel my-10" data-aos="flip-right"
+          data-flickity='{ "freeScroll": true, "wrapAround" : true, "pageDots" : false }'>
+          <div class="h-[200px] md:h-[400px] carousel-cell bg-cover bg-center brightness-[.70] shadow-xl" style="background-image: url('/static/img/carousel1.jpg');"><a rel="noreferrer" target="_blank" href="https://unsplash.com/photos/up_c1IQN33Q" class="p-2">By : Michale</a></div>
+          <div class="h-[200px] md:h-[400px] carousel-cell bg-cover bg-center brightness-[.70] shadow-xl" style="background-image: url('/static/img/carousel2.jpg');"><a rel="noreferrer" target="_blank" href="https://unsplash.com/photos/z0iMCyHwEo4" class="p-2">By : ChutterSnap</a></div>
+          <div class="h-[200px] md:h-[400px] carousel-cell bg-cover bg-center brightness-[.70] shadow-xl" style="background-image: url('/static/img/carousel3.jpg');"><a rel="noreferrer" target="_blank" href="https://unsplash.com/photos/RySd8U4BsUo" class="p-2">By : Richard Bell</a></div>
+          <div class="h-[200px] md:h-[400px] carousel-cell bg-cover bg-center brightness-[.70] shadow-xl" style="background-image: url('/static/img/carousel4.jpg');"><a rel="noreferrer" target="_blank" href="https://unsplash.com/photos/qLIglFCcAeo" class="p-2">By : Paul Einerhand</a></div>
+          <div class="h-[200px] md:h-[400px] carousel-cell bg-cover bg-center brightness-[.70] shadow-xl" style="background-image: url('/static/img/carousel5.jpg');"><a rel="noreferrer" target="_blank" href="https://unsplash.com/photos/n8IU2PLbJq0" class="p-2">By : Thijs Degenkamp</a></div>
+        </div> -->
+      </div>
+
+      <div class="pb-10" >
+        <h1 data-aos="fade-down" class="md:text-6xl text-xl sm:text-3xl text-center font-semibold font-fredoka">Berita Terbaru</h1>
+        <div class="md:flex in-h-[90vh] py-6 items-center justify-center">
+          <div data-aos="zoom-in" class="md:w-1/2 w-[70%] mx-auto md:px-6 px-2 pb-4 md:pb-0">
+            <!-- <img src="{% static 'img/newspaper.png' %}" class="w-full" alt=""> -->
+            <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_4rq0nvpt.json" background="transparent" data-aos="fade-up" speed="1" class="w-full" loop autoplay></lottie-player>
+          </div>
+          <div data-aos="zoom-in" class="h-96 rounded-l-xl md:w-1/2 w-[80%] mx-auto bg-slate-300 overflow-y-auto md:px-6 px-2">
+
+            <div class="min-h-[400px] py-4 md:px-6 px-2 \">
+                {% for berita in beritaTerkini %}
+                <div data-aos="flip-up" data-aos-delay="500" class="w-full min-h-20 items-center my-2 justify-between md:flex rounded-lg bg-violet-200">
+                  <div class="md:w-1/2 w-full">
+                    {% if berita.cover %}
+                    <img src="{{berita.cover.url}}" class="w-1/2 mx-auto" alt="">
+                    {% endif %}
+                  </div>
+                  <div class="px-4 py-2 text-sm md:w-1/2 w-full md:text-base">
+                    <p class="md:text-lg font-fredoka">{{berita.judul}}</p>
+                    <p class="text-slate-500">By : {{berita.author}}</p>
+                    <p class="text-slate-500">{{berita.created_at}}</p>
+                    <a href="{% url 'kategoriberita' berita.kategori_id.slug %}" class="block text-blue-600 py-2 hover:underline">{{berita.kategori_id}}</a>
+                    <a href="{% url 'detailberita' berita.pk %}" class="inline-block py-2 px-4 bg-blue-600 text-white my-2 rounded-lg">Read More</a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+          </div>     
+        </div>
+      </div>
+
+      <div class=" px-10 min-h-screen">
+        <h1 data-aos="fade-down" class="md:text-6xl relative z-10 text-xl sm:text-3xl text-center font-semibold font-fredoka">Lihat Analisis Berdasarkan Penginderaan Jauh</h1>
+        <div class="py-6 md:flex">
+          <div class="md:hidden relative">
+            <!-- <img data-aos="zoom-in" src="{% static 'img/wave.png' %}" alt="" class="w-full mx-auto"> -->
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_mi9lowza.json" background="transparent" data-aos="fade-up" speed="1" class="w-full" loop autoplay></lottie-player>
+          </div>
+          <div class="md:w-1/2 w-full md:flex md:flex-col md:justify-center md:px-10 px-4 relative rounded-2xl">
+            <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base text-justify md:text-left" data-aos="fade-down" data-aos-delay="200">Pengindraan jarak jauh adalah pengukuran atau akuisisi data suatu objek atau fenomena oleh sebuah alat yang tidak secara fisik melakukan kontak dengan objek tersebut atau dari jarak jauh, misalnya dari pesawat, pesawat luar angkasa, satelit, dan kapal.</h2>
+            <div class="">
+              {% for peta in petas %}
+                <a class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block" href="{{peta.folder.url}}" data-aos="fade-up" data-aos-delay="300">{{peta.nama_peta}}</a>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="md:w-1/2 w-full md:flex flex-col justify-center px-16 items-center hidden relative">
+            <!-- <svg data-aos="zoom-in" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full mx-auto absolute ">
+              <path fill="#8A3FFC" d="M34.8,-61.3C45.5,-54.1,54.9,-45.6,63.7,-35.2C72.4,-24.8,80.5,-12.4,79.5,-0.6C78.5,11.2,68.4,22.4,61.7,36.5C55.1,50.6,52,67.6,42.3,74.5C32.6,81.4,16.3,78.3,3.4,72.4C-9.5,66.6,-19,58,-30.4,52C-41.7,46.1,-54.8,42.6,-64.3,34.4C-73.9,26.1,-79.9,13.1,-82.3,-1.4C-84.6,-15.8,-83.3,-31.6,-73.5,-39.4C-63.7,-47.2,-45.4,-47,-31.7,-52.4C-18,-57.8,-9,-68.8,1.5,-71.5C12.1,-74.1,24.1,-68.4,34.8,-61.3Z" transform="translate(100 100)" />
+            </svg> -->
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_mi9lowza.json" background="transparent" data-aos="fade-up" speed="1" class="w-full" loop autoplay></lottie-player>
+            <!-- <img data-aos="zoom-in" data-aos-delay="500" src="{% static 'img/wave.png' %}" alt="Logo" class="w-full"> -->
+          </div>
+        </div>
+      </div>
+      
+      <div class=" px-10 min-h-screen">
+        <h1 data-aos="fade-down" class="md:text-6xl relative z-10 text-xl sm:text-3xl text-center font-semibold font-fredoka">Data penangkapan dan Analisis CPUE</h1>
+        <div class=" py-6 md:flex">
+          <div class="relative">
+            <!-- <img data-aos="zoom-in" src="{% static 'img/wave.png' %}" alt="" class="w-full mx-auto"> -->
+            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_dews3j6m.json" background="transparent"  speed="1" class="w-full mx-auto border" data-aos="fade-up" loop autoplay></lottie-player>
+          </div>
+          <div class="md:w-1/2 w-full md:flex md:flex-col md:justify-center md:px-10 px-4 relative rounded-2xl">
+            <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base text-justify " data-aos="fade-down" data-aos-delay="200">Hasil tangkapan per-unit upaya penangkapan (CPUE; Catch per Unit Effort) adalah merupakan jumlah ikan yang didapatkan (jumlah atau berat) yang diperoleh dari sejumlah upaya penangkapan (efforts) pada rentang waktu tertentu.</h2>
+            <div class="">
+              <a class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block relative" style="left: 100%; transform: translateX(-100%);" href="{% url 'grafikhasiltangkap' %}" data-aos="fade-up" data-aos-delay="300">Selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class=" px-10 min-h-screen">
+        <h1 data-aos="fade-down" class="md:text-6xl relative z-10 text-xl sm:text-3xl text-center font-semibold font-fredoka">Dapatkan Informasi Terkait Gelombang Pasang</h1>
+        <div class="py-6 md:flex">
+          <div class="md:hidden relative">
+            <!-- <img data-aos="zoom-in" src="{% static 'img/wave.png' %}" alt="" class="w-full mx-auto"> -->
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_FyqMgR.json" background="transparent" data-aos="fade-up" speed="1" class="w-full" loop autoplay></lottie-player>
+          </div>
+          <div class="md:w-1/2 w-full md:flex md:flex-col md:justify-center md:px-10 px-4 relative rounded-2xl">
+            <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base text-justify md:text-left" data-aos="fade-down" data-aos-delay="200">Gelombang pasang adalah Gelombang yang disebabkan oleh pengaruh gaya gravitasi bulan terhadap bumi dan gaya sentrifugal yang disebabkan oleh rotasi bumi dan bulan pada porosnya. Pengaruh ini dapat mengakibatkan perpindahan volume air laut, membentuk gelombang dengan perioda sangat panjang (12 hingga 24 jam).</h2>
+            <div class="">
+              <a class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block" href="{% url 'tides' %}" data-aos="fade-up" data-aos-delay="300">Selengkapnya</a>
+            </div>
+          </div>
+          <div class="md:w-1/2 w-full md:flex flex-col justify-center px-16 items-center hidden relative">
+            <!-- <svg data-aos="zoom-in" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full mx-auto absolute ">
+              <path fill="#8A3FFC" d="M34.8,-61.3C45.5,-54.1,54.9,-45.6,63.7,-35.2C72.4,-24.8,80.5,-12.4,79.5,-0.6C78.5,11.2,68.4,22.4,61.7,36.5C55.1,50.6,52,67.6,42.3,74.5C32.6,81.4,16.3,78.3,3.4,72.4C-9.5,66.6,-19,58,-30.4,52C-41.7,46.1,-54.8,42.6,-64.3,34.4C-73.9,26.1,-79.9,13.1,-82.3,-1.4C-84.6,-15.8,-83.3,-31.6,-73.5,-39.4C-63.7,-47.2,-45.4,-47,-31.7,-52.4C-18,-57.8,-9,-68.8,1.5,-71.5C12.1,-74.1,24.1,-68.4,34.8,-61.3Z" transform="translate(100 100)" />
+            </svg> -->
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_FyqMgR.json" background="transparent" data-aos="fade-up" speed="1" class="w-full" loop autoplay></lottie-player>
+            <!-- <img data-aos="zoom-in" data-aos-delay="500" src="{% static 'img/wave.png' %}" alt="Logo" class="w-full"> -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    {% if pesan %}
+      <script>
+        alert("{{pesan}}")
+      </script>
+    {% endif %}
+    
+  {% include "footer.html" %}
+{% endblock %}

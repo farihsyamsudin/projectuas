@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Roboto+Condensed:wght@300&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    {% include "tailwindconfig.html" %}
+    <title>{{title}}</title>
+    {% include "style.html" %}
+</head>
+<body class="min-h-screen bg-slate-50">
+    {% block content %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+    <div class="fixed md:w-12 md:h-12 w-10 h-10 2xl:w-14 2xl:h-14 bottom-3 right-3 z-[999] p-2 bg-white rounded-full">
+        <a href="{% url 'adminpage' %}"><img src="{% static 'img/admin.png' %}" class="w-full" alt=""></a>
+    </div>
+    {% endif %}
+    <script type="text/javascript" src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script src="vendors/sweetalert2/dist/sweetalert2.min.js"></script> -->
+    {% if request.session.alert %}
+    <script>
+        swal("Ok!", "{{request.session.alert}}", "success");
+        setTimeout(() => {
+            var csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+            $.ajax({
+                type: 'POST',
+                url: '{% url "unset_session" %}',
+                data: {
+                    'csrfmiddlewaretoken': csrf_token,
+                },
+                success: function(response) {
+                    console.log('Success');
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error');
+                },
+            });
+        }, 500);
+    </script>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% include "navbar.html" %}
+<section class="px-10 pt-24 pb-10 bg-slate-200 min-h-screen">
+    <h1 class="py-4 text-xl md:text-3xl text-center font-fredoka">Cara Menggunakan API Data Penangkapan PPN Karangantu</h1>
+    <p class="indent-[30px]">API ini disediakan bagi para programmer yang mungkin membutuhkan data secara real time terkait hasil tangkapan di PPN Karangantu, Banten. API ini sangat sederhana dan hanya memberikan request method GET untuk di fetch sebagai informasi saja. Berikut cara lebih lengkap terkait API Data Penangkapan Ikan PPN Karangantu.</p>
+    <div class="w-[90%] mx-auto overflow-x-auto">
+        <table class="w-full">
+            <tr class="[&>*]:py-2 [&>*]:px-4">
+                <td class="">
+                    <div>
+                        <h3>base url</h3>
+                        <h4>/api/</h4>
+                    </div>
+                </td>
+            </tr>
+            <tr class="[&>*]:py-2 [&>*]:px-4">
+                <td class="">
+                    <div>
+                        <h3>Fetch Hasil Tangkapan</h3>
+                        <h4>/api/hasiltangkapan/</h4>
+                    </div>
+                </td>
+            </tr>
+            <tr class="[&>*]:py-2 [&>*]:px-4">
+                <td class="">
+                    <div>
+                        <h3>Fetch Data Kapal</h3>
+                        <h4>/api/kapal/</h4>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2>Response Api Kapal : <a href="/api/kapal/" rel="noreferrer" target="_blank" class="text-blue-600">/api/kapal/</a></h2>
+    <h2>Response Api Hasil Tangkap : <a href="/api/hasiltangkap/" rel="noreferrer" target="_blank" class="text-blue-600">/api/hasiltangkap/</a></h2>
+</section>
+{% include "footer.html" %}
+{% endblock  %}

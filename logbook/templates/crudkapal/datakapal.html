@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% include "navbar.html" %}
+<section class="min-h-screen bg-slate-200 pt-24 px-10 font-robotocon ">
+    <h1 data-aos="zoom-in" class="py-4 text-2xl md:text-4xl sm:text-3xl font-fredoka font-semibold text-center">Data kapal di PPN Karangantu</h1>
+    <div>
+        <a href="{% url 'datalogbook' %}" class="inline-block bg-cyan-600 text-white py-2 px-4 rounded-md mb-2">Lihat Data Penangkapan</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'exportkapal' %}" class="inline-block bg-green-600 text-white py-2 px-4 rounded-md mb-2">Download Data</a>
+            <a href="{% url 'inputkapal' %}" class="inline-block bg-teal-600 text-white py-2 px-4 rounded-md mb-2">Tambah Data</a>
+        {% endif %}
+        <div class="w-full overflow-x-auto py-6">
+            <table class="w-full" id="tablelogbook" style="min-width: 2000px;">
+                <thead>
+                    <tr>
+                        <th>Nama Kapal</th>
+                        <th>Pemilik/Perusahaan</th>
+                        <th>Nahkoda</th>
+                        <th>SIPI</th>
+                        <th>Masa Berlaku</th>
+                        <th>Jumlah ABK lokal</th>
+                        <th>Jumlah ABK asing</th>
+                        <th>Alat Tangkap</th>
+                        <th>Bobot (GT)</th>
+                        <th>Panjang (M)</th>
+                        <th>Deka</th>
+                        <th>Tanda Selar</th>
+                        {% if user.is_authenticated %}
+                        <th>Aksi</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for datakapal in datakapals  %}   
+                        <tr>
+                            <td>{{datakapal.nama_kapal}}</td>
+                            <td>{{datakapal.pemilik}}</td>
+                            <td>{{datakapal.nahkoda}}</td>
+                            <td>{{datakapal.sipi}}</td>
+                            <td>{{datakapal.masa_berlaku}}</td>
+                            <td>{{datakapal.abk_lokal}}</td>
+                            <td>{{datakapal.abk_asing}}</td>
+                            <td>{{datakapal.alat_tangkap}}</td>
+                            <td>{{datakapal.bobot}}</td>
+                            <td>{{datakapal.panjang}}</td>
+                            <td>{{datakapal.dk}}</td>
+                            <td>{{datakapal.tanda_selar}}</td>
+                            {% if user.is_authenticated %}
+                                <td>
+                                    <a href="{% url 'updatekapal' datakapal.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-yellow-600 rounded-md text-white">Edit</a>
+                                    <a onclick="return confirm('Apakah anda yakin untuk menghapus data kapal {{datakapal.nama_kapal}}')" href="{% url 'deletekapal' datakapal.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-red-600 rounded-md text-white">Hapus</a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+ {% include "footer.html" %}
+ <script charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+ <script>
+    let table = new DataTable('#tablelogbook', {
+
+});
+</script>
+
+{% endblock  %}

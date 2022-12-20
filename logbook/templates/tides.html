@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% include "navbar.html" %}
+<section class="min-h-screen bg-slate-200 pt-20 font-robotocon ">
+   <div id="loader" class="w-full h-screen -mt-20 fixed bg-black z-[999] transition scale-0 origin-center bg-opacity-40 flex justify-center items-center">
+      <div>
+         <!-- <h1>Loading</h1> -->
+         <img src="{% static 'img/loading.png' %}" class="w-20 animate-loading" alt="">
+      </div>
+   </div>
+
+   <div>
+      <h1 data-aos="fade-down" class="w-[80%] mx-auto text-xl md:text-3xl py-8 text-center font-fredoka font-semibold">Klik pada peta untuk mengetahui detail gelombang pasang pada lokasi yang dituju</h1>
+      <div data-aos="fade-up" id="map" class="w-[80%] mx-auto h-[500px] rounded-md shadow-2xl brightness-[.90] hover:cursor-pointer"></div>
+      <div id="responseTides" class="py-10"></div>
+   </div>
+ </section>
+
+ {% include "footer.html" %}
+ <script type="text/javascript">
+   let key = '{{api_key}}'
+ </script>
+ <script type="text/javascript" src="{% static 'js/tides.js' %}"></script>
+{% endblock  %}

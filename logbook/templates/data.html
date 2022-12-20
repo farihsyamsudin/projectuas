@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% include "navbar.html" %}
+<section class="min-h-screen bg-slate-200 pt-24 px-10 font-robotocon ">
+    <h1 data-aos="zoom-in" class="py-4 text-2xl md:text-4xl sm:text-3xl font-fredoka font-semibold text-center">Data hasil tangkapan PPN Karangantu</h1>
+    <div>
+        <a href="{% url 'datakapal' %}" class="inline-block my-1 bg-cyan-600 text-white py-2 px-4 rounded-md">Lihat Data Kapal</a>
+        <a href="{% url 'grafikhasiltangkap' %}" class="inline-block my-1 bg-blue-600 text-white py-2 px-4 rounded-md">Lihat Grafik Data Penangkapan</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'exporthasiltangkap' %}" class="inline-block my-1 bg-green-600 text-white py-2 px-4 rounded-md">Download Data</a>
+            <a href="{% url 'inputhasiltangkap' %}" class="inline-block my-1 bg-teal-600 text-white py-2 px-4 rounded-md">Tambah Data</a>
+        {% endif %}
+        <div class="w-full overflow-x-auto py-6">
+            <table class="w-full" id="tablelogbook" style="min-width: 2000px;">
+                <thead>
+                    <tr class="">
+                        <th>Nama kapal</th>
+                        <th>Daerah penangkapan</th>
+                        <th>WPP</th>
+                        <th>Tanggal berangkat</th>
+                        <th>Tanggal datang</th>
+                        <th>Bondolan (Kg)</th>
+                        <th>Cumi (Kg)</th>
+                        <th>Etem (Kg)</th>
+                        <th>Japuh (Kg)</th>
+                        <th>Kuniran (Kg)</th>
+                        <th>Layang (Kg)</th>
+                        <th>Selar (Kg)</th>
+                        <th>Tembang (Kg)</th>
+                        <th>Tongkol (Kg)</th>
+                        <th>Teri (Kg)</th>
+                        <th>Tengkek (Kg)</th>
+                        {% if user.is_authenticated %}
+                            <td>Aksi</td>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dataikan in dataikans %}
+                        <tr class="">
+                            <td>{{dataikan.kapal_id.nama_kapal}}</td>
+                            <td>{{dataikan.daerah_penangkapan}}</td>
+                            <td>{{dataikan.wpp}}</td>
+                            <td>{{dataikan.tanggal_berangkat}}</td>
+                            <td>{{dataikan.tanggal_datang}}</td>
+                            <td>{{dataikan.bondolan}}</td>
+                            <td>{{dataikan.cumi}}</td>
+                            <td>{{dataikan.etem}}</td>
+                            <td>{{dataikan.japuh}}</td>
+                            <td>{{dataikan.kuniran}}</td>
+                            <td>{{dataikan.layang}}</td>
+                            <td>{{dataikan.selar}}</td>
+                            <td>{{dataikan.tembang}}</td>
+                            <td>{{dataikan.tongkol}}</td>
+                            <td>{{dataikan.teri}}</td>
+                            <td>{{dataikan.tengkek}}</td>
+                            {% if user.is_authenticated %}
+                                <td>
+                                    <a href="{% url 'updatehasiltangkap' dataikan.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-yellow-600 rounded-md text-white">Edit</a>
+                                    <a onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" href="{% url 'deletehasiltangkap' dataikan.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-red-600 rounded-md text-white">Hapus</a>
+                                </td>  
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+ {% include "footer.html" %}
+ <script charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    let table = new DataTable('#tablelogbook', {
+
+});
+</script>
+
+{% endblock  %}

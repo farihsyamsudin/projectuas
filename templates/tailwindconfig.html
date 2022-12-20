@@ -1,0 +1,24 @@
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            'sidebar' : '-11px 2px 21px -3px rgba(41,36,36,0.69)',
+          },
+          keyframes: {
+            muter:{
+              '0%' : {transform: 'rotate(-360deg)', opacity:0}, '10%' : {opacity:.15}, '20%' : {opacity:.25}, '40%' : {opacity:.50}, '50%' : {opacity:.75}, '60%' : {opacity:1},'70%' : {opacity:.75}, '80%' : {opacity:.50}, '90%' : {opacity:.25}, '100%' : {opacity:0},
+            },
+          },
+          animation : {
+            loading: 'muter 1.5s infinite',
+          },
+          fontFamily: {
+            'fredoka': ['Fredoka'],
+            'robotocon': ['Roboto Condensed'],
+            'ssp': ['Source Sans Pro'],
+          },
+        }
+      }
+    }
+</script>

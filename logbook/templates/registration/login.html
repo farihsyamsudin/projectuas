@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+    {% if user.is_authenticated  %}
+        <script>
+            document.location.href = "/"
+            
+        </script>
+    {% endif %}
+
+        <section class="flex justify-center items-center w-full h-screen">
+            <div class="mx-8 w-full max-w-[600px] min-h-[80%] shadow-lg border border-slate-200 text-sm md:text-base lg:text-lg rounded-xl">
+                <h1 class="text-center py-3 text-lg md:text-xl lg:text-2xl font-semibold tracking-widest italic pb-4">Login | PPN Karangantu</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="w-[80%] mx-auto relative h-20">
+                        <input autocapitalize="none" autocomplete="username" name="username" onchange="onchangehandle()" id="inputtext" type="text" class="text-sm bg-transparent w-full py-2 absolute border-b-2 border-slate-200 transition focus:outline-none focus:border-blue-600" autofocus>
+                        <h2 id="username" class=" py-4 absolute text-slate-400 text-xs transition">Username</h2>
+                    </div>
+                    <div class="w-[80%] mx-auto relative h-20">
+                        <input autocomplete="current-password" name="password" onchange="onchangehandle()" id="inputtext" type="password" class="text-sm bg-transparent w-full py-2 absolute border-b-2 border-slate-200 transition focus:outline-none focus:border-blue-600 ">
+                        <h2 id="password" class=" py-4 absolute text-slate-400 text-xs transition">Password</h2>
+                    </div>
+                    <button type="submit" class="w-[90%] bg-blue-500 py-2 mx-auto block text-white" 
+                    onsubmit="
+                        inputuname.value = ''
+                        inputpass.value = ''"
+                    >Sign-In!</button>
+                </form>
+            </div>
+        </section>
+{% endblock  %}

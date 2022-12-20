@@ -1,0 +1,39 @@
+<section class="w-full py-10 bg-slate-800 text-white font-robotocon">
+    <div class="w-full md:flex flex-wrap pb-10 items-center">
+        <div class=" w-full md:w-1/2 px-4 pb-2">
+            <h1 class="text-center text-xl md:text-3xl py-1">Alamat</h1>
+            <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" style="border-radius: 20px;" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=300&amp;hl=en&amp;q=PPn Karangantu&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://formatjson.org/">format json</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:300px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:300px;}.gmap_iframe {height:300px!important;}</style></div>
+            <ul>
+                <li>
+                    <img src="" alt="">
+                </li>
+            </ul>
+            <h1 class="text-center text-xl md:text-3xl py-1 mt-4">Terkait</h1>
+            <iframe style="width: 100%; height: 300px; border-radius: 20px;" 
+                    src="https://www.youtube.com/embed/AXv4chVV4uU">
+            </iframe>
+        </div>
+        <div class=" w-full md:w-1/2 px-4 pb-2">
+            <h1 class="text-center text-xl md:text-3xl py-1">Hubungi Kami</h1>
+            <form action="{% url 'simpanpesan' %}" method="POST">
+            {% csrf_token %}
+                <div class="relative z-0 mb-6 w-full group font-semibold tracking-wider">
+                    <input type="email" name="email_pesan" id="email_pesan" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-300 focus:outline-none focus:ring-0 focus:border-blue-300 peer" placeholder=" " required />
+                    <label for="email_pesan" class="peer-focus:font-medium absolute text-sm text-white dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-300 peer-focus:dark:text-blue-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Alamat Email</label>
+                </div>
+                <div class="relative z-0 mb-6 w-full group font-semibold tracking-wider">
+                    <input type="text" name="name_pesan" id="name_pesan" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-300 focus:outline-none focus:ring-0 focus:border-blue-300 peer" placeholder=" " required />
+                    <label for="name_pesan" class="peer-focus:font-medium absolute text-sm text-white dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-300 peer-focus:dark:text-blue-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama</label>
+                </div>
+                <div class="relative z-0 mb-6 w-full group font-semibold tracking-wider">
+                    <label for="message" class="pb-1">Pesan :</label>
+                    <textarea name="message" id="message" class="w-full py-2 px-4 rounded-md bg-transparent ring-2 focus:outline-none focus:ring-blue-300 ring-white caret-white" rows="10"></textarea>
+                </div>
+                <button type="submit" class="inline-block py-2 px-4 bg-blue-600 rounded-md">Kirim Pesan!</button>
+            </form>
+            <h3 class="text-lg md:text-xl pt-6">Atau Email ke : ppnkarangantu@gmail.com</h3>
+        </div>
+    </div>
+    
+    <h6 class="text-center text-sm md:text-base">© Farih Syamsudin (2102731) & Zhafira Alifia (2103661) | Sistem Informasi Kelautan 2021</h6>
+</section>

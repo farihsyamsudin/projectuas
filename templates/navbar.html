@@ -1,0 +1,67 @@
+{% load static %}
+<nav data-aos="fade-down" id="navlp" class="fixed font-ssp font-semibold w-full backdrop-blur-[5px] bg-opacity-80 md:blur-none z-20 flex bg-slate-50 justify-between md:px-10 px-6 py-4 shadow-md items-center rounded-b-xl">
+    <a href="/">
+      <img src="{% static 'img/logo.png' %}" class="w-10" alt="Logo">
+    </a>  
+    <div class="gap-10 md:flex hidden">
+      <!-- <a href="" class="inline-block hover:text-slate-900 hover:underline">Home</a> -->
+      <div class="group relative hover:bg-blue-600 hover:text-white hover:pt-2 rounded-t-md">
+        <span class="hover:cursor-pointer group-hover:px-4 pt-2">Data Penangkapan</span>
+        <div class="absolute w-full hidden group-hover:block group-hover:bg-blue-600 group-hover:px-4 pt-4 rounded-b-md shadow-2xl">
+          <a href="{% url 'datalogbook' %}" class="inline-block hover:text-slate-100 hover:underline pb-2">Data</a> <br>
+          <a href="{% url 'APIDocs' %}" class="inline-block hover:text-slate-100 hover:underline pb-2">API</a>
+        </div>
+      </div>
+      <a href="{% url 'tides' %}" class="inline-block hover:text-slate-900 hover:underline">Informasi Gelombang</a>
+      <a href="{% url 'berita' %}" class="inline-block hover:text-slate-900 hover:underline">Berita</a>
+    </div>
+    <div class="md:flex hidden">
+      {% if  user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="inline-block py-2 px-4 bg-red-600 hover:bg-red-800 text-white rounded-md">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="inline-block py-2 px-4 bg-blue-600 hover:bg-blue-800 text-white rounded-md">Login</a>
+      {% endif %}
+      <!-- <a href="" class="inline-block py-2 px-4 text-blue-600 rounded-md">Signup</a> -->
+    </div>
+    <div id="hamButton" onclick="toggleSidebar()" class="md:hidden hover:cursor-pointer">
+      <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
+      <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
+      <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
+    </div>
+  </nav>
+
+  <div id="sidebar-menu" class="fixed font-ssp font-semibold translate-x-[110%] right-0 z-50 w-[70%] sm:w-[60%] h-screen bg-gradient-to-br from-violet-800 rounded-l-xl to-violet-500 via-violet-600 transition md:hidden py-10 px-4">
+    
+    <div class="absolute top-5 right-5 hover:cursor-pointer" onclick="toggleSidebar()">
+      <span class="block my-3 rotate-45 origin-left w-[40px] h-[2px] bg-black"></span>
+      <span class="block my-3 w-[40px] h-[2px] bg-black scale-0"></span>
+      <span class="block my-3 -rotate-45 origin-left w-[40px] h-[2px] bg-black"></span>
+    </div>
+
+    <div class="text-white">
+      <h1 class="text-center text-xl pb-6">Menu</h1>
+      <div>
+        <div>
+          {% if  user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="inline-block py-2 px-4 bg-red-600 hover:bg-blue-700 rounded-md">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="inline-block py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md">Login</a>
+          {% endif %}
+          <!-- <a href="" class="inline-block py-2 px-4 hover:text-green-600">Sign-Up</a> -->
+        </div>
+        <span class="w-full h-[2px] bg-white block mt-2 rounded-2xl"></span>
+        <div class="group py-2">
+          <span class="hover:cursor-pointer">Data Penangkapan</span>
+          <div class="hidden group-hover:block">
+            <a href="{% url 'datalogbook' %}" class="inline-block py-2 hover:underline">Data</a> <br>
+            <a href="{% url 'APIDocs' %}" class="inline-block pt-2 hover:underline">API</a> <br>
+          </div>
+        </div>
+        <a href="{% url 'tides' %}" class="inline-block py-2 hover:underline">Informasi Gelombang</a> <br>
+        <a href="{% url 'berita' %}" class="inline-block py-2 hover:underline">Berita</a>
+      </div>
+    </div>
+
+  </div>
+
+

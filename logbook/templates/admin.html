@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% include "navbar.html" %}
+{% if user.is_authenticated %}
+  
+<section class="bg-slate-200 font-robotocon min-h-screen pb-8">
+    <div class="pt-20 px-6 md:px-10">
+        <h1 class="py-2 text-center text-2xl md:text-4xl font-fredoka">Halo, {{user.first_name}} {{user.last_name}}!, Selamat bekerja!</h1>
+
+        <h1 class="py-2 text-center text-xl md:text-3xl font-fredoka">Peta</h1>
+        <div class="ring-2 p-4 rounded-md">
+            <h2 class="font-fredoka md:text-lg pb-4">Tambah Peta</h2>
+            <form action="{% url 'simpanpeta' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <div class="relative z-0 mb-6 w-full group font-semibold tracking-wider">
+                        <input type="text" name="nama_peta" id="nama_peta" class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 focus:border-b-black border-b-2 border-gray-300 appearance-none dark: dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
+                        <label for="nama_peta" class="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Peta</label>
+                    </div>
+                    <div class="relative z-0 mb-2 w-full group font-semibold tracking-wider">
+                        <input accept="application/pdf" type="file" name="folder" id="folder" class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-gray-300 appearance-none dark: dark:border-gray-600 dark focus:outline-none focus:ring-0 peer" placeholder=" " required />
+                        <label for="folder" class="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0]">File Peta</label>
+                    </div>
+                </div>  
+                <button type="submit" class="inline-block bg-blue-600 text-white py-2 px-4 rounded-md mb-2">Tambah Peta!</button>
+            </form>
+        </div>
+        <div class="w-full overflow-x-auto py-6">
+            <table class="w-full" id="tablejobpeta" style="min-width: 1000px;">
+                <thead>
+                    <tr class="">
+                        <th>Nama Peta</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for peta in petas %}
+                        <tr class="">
+                            <td>{{peta.nama_peta}}</td>
+                            <td id="responseActionPeta{{peta.id}}">
+                                <a href="{{peta.folder.url}}" class="py-2 px-4 inline-block mx-1 my-1 bg-green-600 rounded-md text-white">Lihat</a>
+                                <button onclick="clickEdit(`{{peta.id}}`, `{{peta.nama_peta}}`)" class="py-2 px-4 inline-block mx-1 my-1 bg-yellow-600 rounded-md text-white">Edit</button> 
+                                <a onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" href="{% url 'hapuspeta' peta.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-red-600 rounded-md text-white">Hapus</a>
+                            </td>  
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h1 class="pb-2 pt-6 text-center text-xl md:text-3xl font-fredoka">Berita</h1>
+        <div class="w-full overflow-x-auto py-6">
+            <table class="w-full" id="tablejobberita" style="min-width: 1000px;">
+                <thead>
+                    <tr class="">
+                        <th>Judul</th>
+                        <th>Kategori</th>
+                        <th>Author</th>
+                        <th>Tanggal dibuat</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for berita in beritas %}
+                        <tr class="">
+                            <td>{{berita.judul}}</td>
+                            <td>{{berita.kategori_id}}</td>
+                            <td>{{berita.author}}</td>
+                            <td>{{berita.created_at}}</td>
+                            <td>
+                                <a href="{% url 'detailberita' berita.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-green-600 rounded-md text-white">Lihat</a>
+                            </td>  
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h1 class="pb-2 pt-6 text-center text-xl md:text-3xl font-fredoka">Pesan dari User</h1>
+        <div class="w-full overflow-x-auto py-6">
+            <table class="w-full" id="tablejobpesan" style="min-width: 1000px;">
+                <thead>
+                    <tr class="">
+                        <th>Email</th>
+                        <th>Nama Pengirim</th>
+                        <th>Pesan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pesan in pesans %}
+                        <tr class="">
+                            <td>{{pesan.email_pesan}}</td>
+                            <td>{{pesan.name_pesan}}</td>
+                            <td>{{pesan.message}}</td>
+                            <td>
+                                <a onclick="return confirm('Apakah anda yakin sudah memberikan balasan untuk pesan ini?')" href="{% url 'hapuspesan' pesan.id %}" class="py-2 px-4 inline-block mx-1 my-1 bg-red-600 rounded-md text-white">Hapus</a>
+                            </td>  
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'datalogbook' %}" class="block text-center py-4 px-2 bg-green-600 text-white rounded-md my-8">Sunting Data Penangkapan</a>
+    </div>
+
+    
+</section>
+<script charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    let table = new DataTable('#tablejobpesan', {
+
+});
+    let table2 = new DataTable('#tablejobpeta', {
+
+});
+    let table3 = new DataTable('#tablejobberita', {
+
+});
+
+const clickEdit = (id, nama_peta) =>{
+    let responseActionPeta = document.getElementById(`responseActionPeta${id}`)
+
+    responseActionPeta.innerHTML = `
+    <form action="{% url 'editpeta' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" value="${id}" name="id" class="py-2 px-4 rounded-md">
+        <input type="text" value="${nama_peta}" name="nama_peta" class="py-2 px-4 rounded-md">
+        <input type="file" name="folder" class="py-2 px-4 rounded-md">
+        <br>
+        <button type="submit" class="py-2 px-4 inline-block mx-1 my-1 bg-blue-600 rounded-md text-white">Simpan!</button> 
+    </form>
+    `
+}
+</script>
+
+{{form.as_p}}
+{% endif %}
+{% include "footer.html" %}
+{% endblock %}
