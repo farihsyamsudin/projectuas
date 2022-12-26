@@ -4,6 +4,6 @@ from django.shortcuts import render
 def tidesInfo(request):
     data = {
         'title' : "Informasi Gelombang Pasang",
-        'api_key' : '399181ac-4eb9-43b9-acf8-28aa81cbcaaa',
+        'api_key' : 'be178de0-dacc-4829-ae26-95b2c5888a63',
     }
     return render(request, 'tides.html', data)
