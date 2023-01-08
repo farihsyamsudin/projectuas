@@ -110,7 +110,7 @@
           {% endif %}
           <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{berita.judul}}</h3>
           <h3 class="pb-2 px-4 text-sm text-slate-300">{{berita.author}} <span>|| {{berita.created_at}}</span></h3>
-          <h3 class="pb-2 px-4 ">{{berita.isi|truncatewords:10|safe}}...</span></h3>
+          <h3 class="pb-2 px-4 ">{{berita.isi|truncatewords:10}}...</span></h3>
           <a href="{% url 'detailberita' berita.pk %}"
             class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
         </div>
@@ -173,7 +173,7 @@
           <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritakkp.judul}}</h3>
           <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritakkp.author}} <span>|| {{beritakkp.created_at}}</span>
           </h3>
-          <h3 class="pb-2 px-4 ">{{beritakkp.isi|truncatewords:10|safe}}...</span></h3>
+          <h3 class="pb-2 px-4 ">{{beritakkp.isi|truncatewords:10}}...</span></h3>
           <a href="{% url 'detailberita' beritakkp.pk %}"
             class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
         </div>
@@ -200,7 +200,7 @@
           <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritappn.judul}}</h3>
           <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritappn.author}} <span>|| {{beritappn.created_at}}</span>
           </h3>
-          <h3 class="pb-2 px-4 ">{{beritappn.isi|truncatewords:10|safe}}...</span></h3>
+          <h3 class="pb-2 px-4 ">{{beritappn.isi|truncatewords:10}}...</span></h3>
           <a href="{% url 'detailberita' beritappn.pk %}"
             class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
         </div>
