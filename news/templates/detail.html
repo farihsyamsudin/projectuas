@@ -15,6 +15,7 @@
             {{detail.isi|safe}}
         </div>
 
+        <a data-aos="flip-left" href="{% url 'berita' %}" class="my-4 rounded-md inline-block bg-rose-600 text-white py-2 px-4">Kembali</a>
         {% if user.is_authenticated %}
             <a data-aos="flip-left" href="{% url 'editberita' detail.pk %}" class="my-4 rounded-md inline-block bg-yellow-600 text-white py-2 px-4">Edit</a>
             <a data-aos="flip-right" href="{% url 'hapusberita' detail.pk %}" onclick="return confirm('Apakah Anda yakin menghapus berita dengan judul {{detail.judul}}?')" class="my-4 rounded-md inline-block bg-red-600 text-white py-2 px-4">Delete</a>

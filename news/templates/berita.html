@@ -2,8 +2,9 @@
 {% block content %}
 {% load static %}
 
-<div id="sidebar-menu" class="fixed font-ssp font-semibold translate-x-[110%] right-0 z-50 w-[70%] sm:w-[60%] h-screen bg-gradient-to-br from-violet-800 rounded-l-xl to-violet-500 via-violet-600 transition md:hidden py-10 px-4">
-    
+<div id="sidebar-menu"
+  class="fixed font-ssp font-semibold translate-x-[110%] right-0 z-50 w-[70%] sm:w-[60%] h-screen bg-gradient-to-br from-violet-800 rounded-l-xl to-violet-500 via-violet-600 transition md:hidden py-10 px-4">
+
   <div class="absolute top-5 right-5 hover:cursor-pointer" onclick="toggleSidebar()">
     <span class="block my-3 rotate-45 origin-left w-[40px] h-[2px] bg-black"></span>
     <span class="block my-3 w-[40px] h-[2px] bg-black scale-0"></span>
@@ -15,9 +16,9 @@
     <div>
       <div>
         {% if user.is_authenticated %}
-          <a href="{% url 'logout' %}" class="inline-block py-2 px-4 bg-red-600 hover:bg-red-700 rounded-md">Logout</a>
-          {% else %}
-          <a href="{% url 'login' %}" class="inline-block py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md">Login</a>
+        <a href="{% url 'logout' %}" class="inline-block py-2 px-4 bg-red-600 hover:bg-red-700 rounded-md">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="inline-block py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md">Login</a>
         {% endif %}
         <!-- <a href="" class="inline-block py-2 px-4 hover:text-green-600">Sign-Up</a> -->
       </div>
@@ -36,154 +37,181 @@
 
 </div>
 <section>
-    <div data-aos="fade-down" class="w-full font-fredoka pb-10 relative shadow-md" id="headerberita">
-      <div class="w-full h-full bg-center bg-cover absolute brightness-[.60]" style="background-image: url('/static/img/bluepattern.jpg');"></div>
-      <div class="relative z-10">
-        <h1 class="text-2xl md:text-4xl text-white font-semibold text-center italic py-4">Berita Kelautan dan Perikanan</h1>
-        <form method="GET" action="">
-          <div class="w-[90%] mx-auto md:w-[40%] lg:w-[30%]">
-            <input name="search" type="text" class="py-2 px-4 my-4 rounded-md w-full  bg-slate-200" placeholder="Search">
-            <button class=" text-white bg-blue-600 rounded-md px-4 py-2" type="submit">Cari!</button>
-          </div>
-        </form>
+  <div data-aos="fade-down" class="w-full font-fredoka pb-10 relative shadow-md" id="headerberita">
+    <div class="w-full h-full bg-center bg-cover absolute brightness-[.60]"
+      style="background-image: url('/static/img/bluepattern.jpg');"></div>
+    <div class="relative z-10">
+      <h1 class="text-2xl md:text-4xl text-white font-semibold text-center italic py-4">Berita Kelautan dan Perikanan
+      </h1>
+      <form method="GET" action="">
+        <div class="w-[90%] mx-auto md:w-[40%] lg:w-[30%]">
+          <input name="search" type="text" class="py-2 px-4 my-4 rounded-md w-full  bg-slate-200" placeholder="Search">
+          <button class=" text-white bg-blue-600 rounded-md px-4 py-2" type="submit">Cari!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div data-aos="fade-down"
+    class="w-full h-20 font-ssp font-semibold flex justify-between md:gap-10 gap-4 items-center bg-slate-200 shadow-xl text-xs sm:text-sm md:text-base px-4"
+    id="navbarberita">
+    <a href="/">
+      <img src="{% static 'img/logo.png' %}" class="w-10" alt="Logo">
+    </a>
+    <div class="gap-10 md:flex hidden">
+      <!-- <a href="" class="inline-block hover:text-slate-900 hover:underline">Home</a> -->
+      <div class="group relative hover:bg-blue-600 hover:text-white hover:pt-2 rounded-t-md">
+        <span class="hover:cursor-pointer group-hover:px-4 pt-2">Data Penangkapan</span>
+        <div
+          class="absolute w-full hidden group-hover:block group-hover:bg-blue-600 group-hover:px-4 pt-4 rounded-b-md shadow-2xl">
+          <a href="{% url 'datalogbook' %}" class="inline-block hover:text-slate-100 hover:underline pb-2">Data</a> <br>
+          <a href="" class="inline-block hover:text-slate-100 hover:underline pb-2">API</a>
+        </div>
+      </div>
+      <a href="{% url 'tides' %}" class="inline-block hover:text-slate-900 hover:underline">Informasi Gelombang</a>
+      <a href="{% url 'berita' %}" class="inline-block hover:text-slate-900 hover:underline">Berita</a>
+    </div>
+    <div class="md:flex hidden">
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}"
+        class="inline-block py-2 px-4 bg-red-600 hover:bg-red-800 text-white rounded-md">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}"
+        class="inline-block py-2 px-4 bg-blue-600 hover:bg-blue-800 text-white rounded-md">Login</a>
+      {% endif %}
+    </div>
+    <div id="hamButton" onclick="toggleSidebar()" class="md:hidden hover:cursor-pointer">
+      <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
+      <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
+      <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
+    </div>
+
+  </div>
+
+  {% if request.GET %}
+  <div class="w-full min-h-screen md:px-10 px-4 py-10 font-robotocon">
+
+    {% if user.is_authenticated %}
+    <a data-aos="flip-up" href="{% url 'tambahberita' %}"
+      class="inline-block mb-2 rounded-md bg-blue-600 py-2 px-4 text-white ">Tambah Berita</a>
+    {% endif %}
+
+    <!-- Berita Pencarian-->
+    <div class="pb-6">
+      <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">Pencarian : {{keyword}}</h2>
+      <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
+        {% for berita in beritas %}
+        <div data-aos="flip-down"
+          class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
+          {% if berita.cover %}
+          <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md"
+            style="background-image: url('{{berita.cover.url}}');"></div>
+          <!-- <img src="{{berita.cover.url}}" class="w-full brightness-[.85] rounded-t-md" alt=""> -->
+          {% endif %}
+          <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{berita.judul}}</h3>
+          <h3 class="pb-2 px-4 text-sm text-slate-300">{{berita.author}} <span>|| {{berita.created_at}}</span></h3>
+          <h3 class="pb-2 px-4 ">{{berita.isi|truncatewords:10|safe}}...</span></h3>
+          <a href="{% url 'detailberita' berita.pk %}"
+            class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
+        </div>
+        {% endfor %}
       </div>
     </div>
+    <!-- Berita Pencarian END -->
 
-    <div data-aos="fade-down" class="w-full h-20 font-ssp font-semibold flex justify-between md:gap-10 gap-4 items-center bg-slate-200 shadow-xl text-xs sm:text-sm md:text-base px-4" id="navbarberita">
-          <a href="/">
-            <img src="{% static 'img/logo.png' %}" class="w-10" alt="Logo">
-          </a>  
-          <div class="gap-10 md:flex hidden">
-            <!-- <a href="" class="inline-block hover:text-slate-900 hover:underline">Home</a> -->
-            <div class="group relative hover:bg-blue-600 hover:text-white hover:pt-2 rounded-t-md">
-              <span class="hover:cursor-pointer group-hover:px-4 pt-2">Data Penangkapan</span>
-              <div class="absolute w-full hidden group-hover:block group-hover:bg-blue-600 group-hover:px-4 pt-4 rounded-b-md shadow-2xl">
-                <a href="{% url 'datalogbook' %}" class="inline-block hover:text-slate-100 hover:underline pb-2">Data</a> <br>
-                <a href="" class="inline-block hover:text-slate-100 hover:underline pb-2">API</a>
-              </div>
-            </div>
-            <a href="{% url 'tides' %}" class="inline-block hover:text-slate-900 hover:underline">Informasi Gelombang</a>
-            <a href="{% url 'berita' %}" class="inline-block hover:text-slate-900 hover:underline">Berita</a>
-          </div>
-          <div class="md:flex hidden">
-            {% if  user.is_authenticated %}
-              <a href="{% url 'logout' %}" class="inline-block py-2 px-4 bg-red-600 hover:bg-red-800 text-white rounded-md">Logout</a>
-              {% else %}
-              <a href="{% url 'login' %}" class="inline-block py-2 px-4 bg-blue-600 hover:bg-blue-800 text-white rounded-md">Login</a>
-            {% endif %}
-          </div>
-          <div id="hamButton" onclick="toggleSidebar()" class="md:hidden hover:cursor-pointer">
-            <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
-            <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
-            <span class="block my-3 w-[40px] h-[2px] bg-black"></span>
-          </div>
+  </div>
+  {% else %}
+  <div class="w-full min-h-screen md:px-10 px-4 py-10 font-robotocon">
 
+    {% if user.is_authenticated %}
+    <a data-aos="flip-up" href="{% url 'tambahberita' %}"
+      class="inline-block mb-2 rounded-md bg-blue-600 py-2 px-4 text-white ">Tambah Berita</a>
+    {% endif %}
+
+    <!-- Berita Umum -->
+    <div class="pb-6">
+      <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">{{kategoriumum.kategori}}</h2>
+      <p data-aos="fade-right" class="text-slate-500">{{kategoriumum.keterangan}}</p>
+      <a data-aos="fade-up" href="{% url 'kategoriberita' kategoriumum.slug %}"
+        class="text-blue-600 inline-block hover:underline">Lihat Semua Berita, Kategori : {{kategoriumum.kategori}}</a>
+      <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
+        {% for beritaumum in beritaumums %}
+        <div data-aos="flip-down"
+          class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
+          {% if beritaumum.cover %}
+          <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md"
+            style="background-image: url('{{beritaumum.cover.url}}');"></div>
+          <!-- <img src="{{beritaumum.cover.url}}" class="w-full brightness-[.85] rounded-t-md" alt="">      -->
+          {% endif %}
+          <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritaumum.judul}}</h3>
+          <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritaumum.author}} <span>|| {{beritaumum.created_at}}</span>
+          </h3>
+          <h3 class="pb-2 px-4 ">{{beritaumum.isi|truncatewords:10}}...</span></h3>
+          <a href="{% url 'detailberita' beritaumum.pk %}"
+            class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
+        </div>
+        {% endfor %}
+      </div>
     </div>
+    <!-- Berita Umum END -->
 
-{% if request.GET %}
-<div class="w-full min-h-screen md:px-10 px-4 py-10 font-robotocon">
+    <!-- Berita KKP -->
+    <div class="pb-6">
+      <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">{{kategorikkp.kategori}}</h2>
+      <p data-aos="fade-right" class="text-slate-500">{{kategorikkp.keterangan}}</p>
+      <a data-aos="fade-up" href="{% url 'kategoriberita' kategorikkp.slug %}"
+        class="inline-block text-blue-600 hover:underline">Lihat Semua Berita, Kategori : {{kategorikkp.kategori}}</a>
+      <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
+        {% for beritakkp in beritakkps %}
+        <div data-aos="flip-down"
+          class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
+          {% if beritakkp.cover %}
+          <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md"
+            style="background-image: url('{{beritakkp.cover.url}}');"></div>
+          <!-- <img src="{{beritakkp.cover.url}}" class="w-full brightness-[.85] rounded-t-md" alt="">      -->
+          {% endif %}
+          <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritakkp.judul}}</h3>
+          <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritakkp.author}} <span>|| {{beritakkp.created_at}}</span>
+          </h3>
+          <h3 class="pb-2 px-4 ">{{beritakkp.isi|truncatewords:10|safe}}...</span></h3>
+          <a href="{% url 'detailberita' beritakkp.pk %}"
+            class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Berita KKP END -->
 
-  {% if user.is_authenticated %}
-    <a data-aos="flip-up" href="{% url 'tambahberita' %}" class="inline-block mb-2 rounded-md bg-blue-600 py-2 px-4 text-white ">Tambah Berita</a>
+    <!-- Berita Karangantu -->
+    <div class="pb-6">
+      <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">{{kategorippn.kategori}}</h2>
+      <p data-aos="fade-right" class="text-slate-500">{{kategorippn.keterangan}}</p>
+      <a data-aos="fade-up" href="{% url 'kategoriberita' kategorippn.slug %}"
+        class="inline-block text-blue-600 hover:underline">Lihat Semua Berita, Kategori : {{kategorippn.kategori}}</a>
+      <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
+        {% for beritappn in beritappns %}
+        <div data-aos="flip-down"
+          class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
+          {% if beritappn.cover %}
+          <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md"
+            style="background-image: url('{{beritappn.cover.url}}');"></div>
+          <!-- <img src="{{beritappn.cover.url}}" class="w-full  brightness-[.85] rounded-t-md" alt="">      -->
+          {% endif %}
+          <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritappn.judul}}</h3>
+          <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritappn.author}} <span>|| {{beritappn.created_at}}</span>
+          </h3>
+          <h3 class="pb-2 px-4 ">{{beritappn.isi|truncatewords:10|safe}}...</span></h3>
+          <a href="{% url 'detailberita' beritappn.pk %}"
+            class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Berita Karangantu END -->
+
+  </div>
   {% endif %}
 
-  <!-- Berita Pencarian-->
-  <div class="pb-6">
-    <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">Pencarian : {{keyword}}</h2>
-    <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
-      {% for berita in beritas %}
-      <div data-aos="flip-down" class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
-        {% if berita.cover %}
-        <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md" style="background-image: url('{{berita.cover.url}}');"></div>
-        <!-- <img src="{{berita.cover.url}}" class="w-full brightness-[.85] rounded-t-md" alt=""> -->
-        {% endif %}
-        <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{berita.judul}}</h3>    
-        <h3 class="pb-2 px-4 text-sm text-slate-300">{{berita.author}} <span>|| {{berita.created_at}}</span></h3> 
-        <h3 class="pb-2 px-4 ">{{berita.isi|truncatewords:10|safe}}...</span></h3> 
-        <a href="{% url 'detailberita' berita.pk %}" class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-  <!-- Berita Pencarian END -->
-
-</div>
-{% else %}
-<div class="w-full min-h-screen md:px-10 px-4 py-10 font-robotocon">
-
-  {% if user.is_authenticated %}
-    <a data-aos="flip-up" href="{% url 'tambahberita' %}" class="inline-block mb-2 rounded-md bg-blue-600 py-2 px-4 text-white ">Tambah Berita</a>
-  {% endif %}
-
-  <!-- Berita Umum -->
-  <div class="pb-6">
-    <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">{{kategoriumum.kategori}}</h2>
-    <p data-aos="fade-right" class="text-slate-500">{{kategoriumum.keterangan}}</p>
-    <a data-aos="fade-up" href="{% url 'kategoriberita' kategoriumum.slug %}" class="text-blue-600 inline-block hover:underline">Lihat Semua Berita, Kategori : {{kategoriumum.kategori}}</a>
-    <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
-      {% for beritaumum in beritaumums %}
-      <div data-aos="flip-down" class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
-        {% if beritaumum.cover %}
-        <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md" style="background-image: url('{{beritaumum.cover.url}}');"></div>
-        <!-- <img src="{{beritaumum.cover.url}}" class="w-full brightness-[.85] rounded-t-md" alt="">      -->
-        {% endif %}
-        <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritaumum.judul}}</h3>    
-        <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritaumum.author}} <span>|| {{beritaumum.created_at}}</span></h3> 
-        <h3 class="pb-2 px-4 ">{{beritaumum.isi|truncatewords:10|safe}}...</span></h3> 
-        <a href="{% url 'detailberita' beritaumum.pk %}" class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-  <!-- Berita Umum END -->
-
-  <!-- Berita KKP -->
-  <div class="pb-6">
-    <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">{{kategorikkp.kategori}}</h2>
-    <p data-aos="fade-right" class="text-slate-500">{{kategorikkp.keterangan}}</p>
-    <a data-aos="fade-up" href="{% url 'kategoriberita' kategorikkp.slug %}" class="inline-block text-blue-600 hover:underline">Lihat Semua Berita, Kategori : {{kategorikkp.kategori}}</a>
-    <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
-      {% for beritakkp in beritakkps %}
-      <div data-aos="flip-down" class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
-        {% if beritakkp.cover %}
-        <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md" style="background-image: url('{{beritakkp.cover.url}}');"></div>
-        <!-- <img src="{{beritakkp.cover.url}}" class="w-full brightness-[.85] rounded-t-md" alt="">      -->
-        {% endif %}
-        <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritakkp.judul}}</h3>    
-        <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritakkp.author}} <span>|| {{beritakkp.created_at}}</span></h3> 
-        <h3 class="pb-2 px-4 ">{{beritakkp.isi|truncatewords:10|safe}}...</span></h3> 
-        <a href="{% url 'detailberita' beritakkp.pk %}" class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-  <!-- Berita KKP END -->
-
-  <!-- Berita Karangantu -->
-  <div class="pb-6">
-    <h2 data-aos="fade-left" class="font-semibold inline-block text-lg md:text-2xl">{{kategorippn.kategori}}</h2>
-    <p data-aos="fade-right" class="text-slate-500">{{kategorippn.keterangan}}</p>
-    <a data-aos="fade-up" href="{% url 'kategoriberita' kategorippn.slug %}" class="inline-block text-blue-600 hover:underline">Lihat Semua Berita, Kategori : {{kategorippn.kategori}}</a>
-    <div class="flex flex-wrap md:gap-10 gap-4 justify-center md:py-10 py-6">
-      {% for beritappn in beritappns %}
-      <div data-aos="flip-down" class="shadow-2xl bg-gradient-to-br text-slate-100 w-[250px] md:w-[350px] from-pallete-1 pb-4 rounded-md to-pallete-2 via-pallete-3">
-        {% if beritappn.cover %}
-        <div class="h-[200px] bg-cover reltive brightness-[.80] w-full bg-center rounded-t-md" style="background-image: url('{{beritappn.cover.url}}');"></div>
-        <!-- <img src="{{beritappn.cover.url}}" class="w-full  brightness-[.85] rounded-t-md" alt="">      -->
-        {% endif %}
-        <h3 class="py-2 px-4 text-xl font-semibold font-fredoka">{{beritappn.judul}}</h3>    
-        <h3 class="pb-2 px-4 text-sm text-slate-300">{{beritappn.author}} <span>|| {{beritappn.created_at}}</span></h3> 
-        <h3 class="pb-2 px-4 ">{{beritappn.isi|truncatewords:10|safe}}...</span></h3> 
-        <a href="{% url 'detailberita' beritappn.pk %}" class="py-2 mx-4 px-4 font-inter rounded-md bg-pallete-4 inline-block mt-4">Read More...</a>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-  <!-- Berita Karangantu END -->
-
-</div>
-{% endif %}
-    
-  </section>
-  {% include "footer.html" %}
+</section>
+{% include "footer.html" %}
 {% endblock %}
