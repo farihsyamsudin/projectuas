@@ -36,7 +36,7 @@ urlpatterns = [
     path('data/hasiltangkap/delete/<int:id>/', deleteHasilTangkap, name='deletehasiltangkap'),
     path('data/hasiltangkap/export/xls/', export_xls_hasiltangkap, name='exporthasiltangkap'),
     path('data/kapal/export/xls/', export_xls_kapal, name='exportkapal'),
-    path('signup/', Signup, name='signup'),
+    path('signup/', signup, name='signup'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('simpanpesan/', SimpanPesan, name='simpanpesan'),

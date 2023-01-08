@@ -42,7 +42,11 @@
     <!-- <script src="vendors/sweetalert2/dist/sweetalert2.min.js"></script> -->
     {% if request.session.alert %}
     <script>
-        swal("Ok!", "{{request.session.alert}}", "success");
+        if ("{{request.session.alert}}" !== "Token Salah!. Anda tidak diizinkan mendaftar" && "{{request.session.alert}}" !== "Terjadi Kesalahan!. Baca Kriteria dengan benar!") {
+            swal("Ok!", "{{request.session.alert}}", "success");
+        } else {
+            swal("Gagal!", "{{request.session.alert}}", "error");
+        }
         setTimeout(() => {
             var csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
             $.ajax({

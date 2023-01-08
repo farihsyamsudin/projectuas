@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from news.models import *
 from .forms import *
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -10,29 +12,33 @@ from .forms import *
 def index(request):
     beritaTerkini = Berita.objects.all().order_by('-id')[:5]
     data = {
-        'title' : "Web",
+        'title' : "PPN Karangantu",
         'beritaTerkini' : beritaTerkini,
         'petas' : Peta.objects.all()
     }
     return render(request, 'index.html', data)
 
-def Signup(request):
+def signup(request):
     if request.POST:
-        form = FormAdminRequst(request.POST)
-        if form.is_valid():
-            form.save()
-            request.session['alert'] = "Permintaan Signup diterima, anda akan dihubungi melalui email jika akun anda sudah aktif"
-            data={
-                'title' : "Input Data Kapal", 
-                'forms' : form,
-            }
-            return redirect('/')
+        if request.POST['token'] == "TokenDaftarAdminPPN":
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                request.session['alert'] = "User Berhasil Dibuat. harap login menggunakan akun yang telah didaftarkan"
+                return redirect('login')
+            else: 
+                request.session['alert'] = "Terjadi Kesalahan!. Baca Kriteria dengan benar!. Atau Konfirmasi Password salah!"
+                return redirect('signup')
+        else:
+            request.session['alert'] = "Token Salah!. Anda tidak diizinkan mendaftar"
+            return redirect('signup')
     else:
+        form = UserCreationForm()
         data = {
-            'title' : "Signup Admin",
-            "form" : FormAdminRequst()
+            'title' : 'Signup User',
+            'form' : UserCreationForm(),
         }
-    return render(request, 'registration/signup.html', data)
+        return render(request, 'registration/signup.html', data)
 
 @login_required(login_url=settings.LOGIN_URL)
 def AdminPage(request):

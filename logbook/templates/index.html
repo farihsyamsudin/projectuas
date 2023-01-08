@@ -11,7 +11,7 @@
           <h1 class="lg:text-6xl md:text-4xl font-semibold pt-6 text-xl sm:text-3xl font-fredoka" data-aos="fade-down" >Pelabuhan Perikanan Nusantara</h1>
           <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base" data-aos="fade-left" data-aos-delay="200">Adalah pelabuhan perikanan yang diperuntukkan bagi kapal perikanan yang beroperasi di perairan nusantara</h2>
           <div class="">
-            <a href="#deskripsippnkarangantu" class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block" data-aos="fade-right" data-aos-delay="300">Selengkapnya</a>
+            <a href="#deskripsippnkarangantu" class="bg-pallete-1 text-white py-2 px-4 text-lg rounded-md inline-block" data-aos="fade-right" data-aos-delay="300">Selengkapnya</a>
           </div>
         </div>
         <div class="md:w-1/2 w-full md:flex flex-col justify-center px-16 items-center hidden relative">
@@ -26,7 +26,7 @@
           Pelabuhan Perikanan Nusantara (PPN) Karangantu terletak pada posisi koordinat 06º 02' LS - 106º 09' BT.  Pada awalnya PPN Karangantu merupakan suatu pantai yang secara tradisional berkembang dari suatu kelompok pemukiman yang mendiami daerah dari lahan di muara kali Cibanten. Seiring waktu, PPN Karangantu menjadi suatu pelabuhan nelayan yang cukup besar dan berperan penting sebagai pusat kegiatan perikanan yang memasok sebagian kebutuhan ikan wilayah Provinsi Banten. Pada tahun 1975/1976 Pelabuhan Perikanan Karangantu  mulai dibangun diatas tanah seluas 2.5 Ha bertempat di Desa Banten Kecamatan Kasemen  dan berdasarkan SK Menteri Pertanian Nomor: 311/Kpts/Org/5/1978 secara resmi beroperasional dan menjadi UPT dibawah Direktorat Jenderal Perikanan Tangkap dengan nama Pelabuhan Perikanan Pantai (PPP) Karangantu bertipe C.  Seiring dengan semakin berkembang dan meningkatnya kegiatan operasional pelabuhan maka tanggal 30 Desember 2010 melalui Peraturan Menteri Kelautan dan Perikanan Republik Indonesia Nomor : PER.29/MEN/2010 tanggal 30 Desember 2010 tentang perubahan kedua atas Peraturan Menteri Kelautan dan Perikanan Nomor PER.06/MEN/2007 tentang Organisasi dan Tata Kerja Pelabuhan Perikanan yang didahului dengan dikeluarkannya Surat Menteri Negara Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Republik Indonesia tanggal 02 Desember 2010 Nomor. B.3677/M.PAN-RB/12/2010 tentang Usulan Penataan UPT dilingkungan Kementerian Kelautan dan Perikanan sehingga pada tanggal 30 Desember 2010 Pelabuhan Perikanan Pantai Karangantu resmi berganti nama dan meningkat kelasnya menjadi Pelabuhan Perikanan Nusantara (PPN) Karangantu bertipe B.
         </p>
         <p data-aos="fade-right" class="md:px-10 px-4 text-slate-800 text-sm md:text-lg">
-          Sumber : <a href="https://pipp.djpt.kkp.go.id/profil_pelabuhan/1309/informasi" target="_blank" rel="noreferrer" class="text-violet-800">PIPP</a>
+          Sumber : <a href="https://pipp.djpt.kkp.go.id/profil_pelabuhan/1309/informasi" target="_blank" rel="noreferrer" class="text-pallete-3">PIPP</a>
         </p>
 
         <!-- <div class="carousel my-10" data-aos="flip-right"
@@ -50,7 +50,7 @@
 
             <div class="min-h-[400px] py-4 md:px-6 px-2 \">
                 {% for berita in beritaTerkini %}
-                <div data-aos="flip-up" data-aos-delay="500" class="w-full min-h-20 items-center my-2 justify-between md:flex rounded-lg bg-violet-200">
+                <div data-aos="flip-up" data-aos-delay="500" class="w-full min-h-20 items-center my-2 justify-between md:flex rounded-lg bg-violet-100">
                   <div class="md:w-1/2 w-full">
                     {% if berita.cover %}
                     <img src="{{berita.cover.url}}" class="w-1/2 mx-auto" alt="">
@@ -71,7 +71,8 @@
         </div>
       </div>
 
-      <div class=" px-10 min-h-screen">
+      <div class=" px-10 min-h-screen" style="background: rgb(226,232,240);
+      background: linear-gradient(175deg, rgba(226,232,240,1) 16%, rgba(199,209,219,1) 16%, rgba(199,209,219,1) 81%, rgba(226,232,240,1) 81%);">
         <h1 data-aos="fade-down" class="md:text-6xl relative z-10 text-xl sm:text-3xl text-center font-semibold font-fredoka">Lihat Analisis Berdasarkan Penginderaan Jauh</h1>
         <div class="py-6 md:flex">
           <div class="md:hidden relative">
@@ -82,7 +83,7 @@
             <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base text-justify md:text-left" data-aos="fade-down" data-aos-delay="200">Pengindraan jarak jauh adalah pengukuran atau akuisisi data suatu objek atau fenomena oleh sebuah alat yang tidak secara fisik melakukan kontak dengan objek tersebut atau dari jarak jauh, misalnya dari pesawat, pesawat luar angkasa, satelit, dan kapal.</h2>
             <div class="">
               {% for peta in petas %}
-                <a class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block" href="{{peta.folder.url}}" data-aos="fade-up" data-aos-delay="300">{{peta.nama_peta}}</a>
+                <a class="bg-pallete-3 my-1 text-white py-2 px-4 text-lg rounded-md inline-block" href="{{peta.folder.url}}" data-aos="fade-up" data-aos-delay="300">{{peta.nama_peta}}</a>
               {% endfor %}
             </div>
           </div>
@@ -106,7 +107,7 @@
           <div class="md:w-1/2 w-full md:flex md:flex-col md:justify-center md:px-10 px-4 relative rounded-2xl">
             <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base text-justify " data-aos="fade-down" data-aos-delay="200">Hasil tangkapan per-unit upaya penangkapan (CPUE; Catch per Unit Effort) adalah merupakan jumlah ikan yang didapatkan (jumlah atau berat) yang diperoleh dari sejumlah upaya penangkapan (efforts) pada rentang waktu tertentu.</h2>
             <div class="">
-              <a class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block relative" style="left: 100%; transform: translateX(-100%);" href="{% url 'grafikhasiltangkap' %}" data-aos="fade-up" data-aos-delay="300">Selengkapnya</a>
+              <a class="bg-pallete-3 text-white py-2 px-4 text-lg rounded-md inline-block relative" style="left: 100%; transform: translateX(-100%);" href="{% url 'grafikhasiltangkap' %}" data-aos="fade-up" data-aos-delay="300">Selengkapnya</a>
             </div>
           </div>
         </div>
@@ -122,7 +123,7 @@
           <div class="md:w-1/2 w-full md:flex md:flex-col md:justify-center md:px-10 px-4 relative rounded-2xl">
             <h2 class="md:text-xl lg:text-2xl text-slate-500 py-4 text-sm sm:text-base text-justify md:text-left" data-aos="fade-down" data-aos-delay="200">Gelombang pasang adalah Gelombang yang disebabkan oleh pengaruh gaya gravitasi bulan terhadap bumi dan gaya sentrifugal yang disebabkan oleh rotasi bumi dan bulan pada porosnya. Pengaruh ini dapat mengakibatkan perpindahan volume air laut, membentuk gelombang dengan perioda sangat panjang (12 hingga 24 jam).</h2>
             <div class="">
-              <a class="bg-violet-600 text-white py-2 px-4 text-lg rounded-md inline-block" href="{% url 'tides' %}" data-aos="fade-up" data-aos-delay="300">Selengkapnya</a>
+              <a class="bg-pallete-3 text-white py-2 px-4 text-lg rounded-md inline-block" href="{% url 'tides' %}" data-aos="fade-up" data-aos-delay="300">Selengkapnya</a>
             </div>
           </div>
           <div class="md:w-1/2 w-full md:flex flex-col justify-center px-16 items-center hidden relative">
