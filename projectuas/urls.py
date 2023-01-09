@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from logbook.views import *
 from logbook.viewstides import *
 from logbook.viewslogbook import *
@@ -8,6 +8,8 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from logbook.viewset_api import *
 from rest_framework import routers
+from django.conf import settings
+from django.views.static import serve
 
 router = routers.DefaultRouter()
 router.register('hasiltangkap', HasilTangkapViewset)
@@ -45,8 +47,10 @@ urlpatterns = [
     path('editpeta/', EditPeta, name='editpeta'),
     path('hapuspeta/<int:id>', HapusPeta, name='hapuspeta'),
     path('unset_session/', unset_session, name='unset_session'),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT})
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
