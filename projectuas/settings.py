@@ -157,3 +157,6 @@ LOGIN_REDIRECT_URL = '/adminpage/'
 LOGIN_URL = 'login'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+HANDLER_404 = 'logbook.views.handler404'
+HANDLER_500 = 'logbook.views.handler500'

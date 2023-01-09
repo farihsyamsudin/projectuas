@@ -104,3 +104,9 @@ def unset_session(request):
     if 'alert' in request.session:
         del request.session['alert']
     return redirect(request.path)
+
+def handler404(request, exception):
+    return render(request, '404.html')
+
+def handler500(request):
+    return render(request, '500.html')
